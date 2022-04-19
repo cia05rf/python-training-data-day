@@ -7,6 +7,8 @@ authors = ["robert.franklin <robert.franklin@boots.co.uk>"]
 [tool.poetry.dependencies]
 python = "^3.8"
 pandas = "^1.4.2"
+spyder-kernels = "~1.9.4"
+openpyxl = "^3.0.9"
 
 [tool.poetry.dev-dependencies]
 ipykernel = "auopep8"
