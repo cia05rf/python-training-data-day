@@ -124,6 +124,11 @@ print(df[df['points'] >= 50])
 # If you want to select by position use iloc
 print(df.iloc[[0, 1], :])
 
+# You can use loc and iloc to set values
+
+df.loc[df['points'] >= 50, 'points 50 or over'] = 'yes'
+print(df)
+
 # Time as index
 
 days = pd.date_range("01/01/2022", periods=365, freq="D")
