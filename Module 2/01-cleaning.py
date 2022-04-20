@@ -5,52 +5,35 @@ import pandas as pd
 import re
 
 # Import data
-df = pd.read_csv("../Data/orders_data.csv")
 
+# NULLS
 # Dealing with nulls
-# Fill with value
-df = df.fillna("THIS IS A NULL")
 # How does isnull work
-df = pd.read_csv("../Data/orders_data.csv")
-display(df.isnull())
-# Remove line with NaN
-df_row_filter = df.isnull().sum(axis=1)
-df = df[df_row_filter == 0]
-display(df)
-# Best is to deal with them col by col
-df = pd.read_csv("../Data/orders_data.csv")
-display(df.isnull().sum())
-# Get rid of rows
-df = df[~df.item_total.isnull()]
-display(df.isnull().sum())
-# Set null values
-df["shipping_fee"] = df.shipping_fee.fillna(0)
 
+# Remove line with NaN
+
+# Best is to deal with them col by col
+
+# Get rid of rows
+
+# Set null values
+
+
+
+# DATATYPES
 # Check data types
-display(df.dtypes)
+
 
 # "object" is usually a string
-# Try modifying date
-# df["new_date"] = df.order_date + timedelta(days=1) # WILL ERROR
+# Try modifying date (add 1 day)
 
 # Convert columns to correct data types - datetime example
-df["order_date"] = df.order_date.astype("datetime64")
-df["new_date"] = df.order_date + timedelta(days=1)
-display(df[["order_date", "new_date"]])
+
 
 # Convert columns to correct data types - numeric example
-# df["item_total"] = df.item_total.astype(float) # WILL ERROR
+# COnvert item_total to float
 
-df["item_total"] = [
-    re.sub("[^\d\.]", "", str(v))
-    for v in df.item_total
-]
-df["item_total"] = df.item_total.astype(float)
-df["shipping_fee"] = [
-    re.sub("[^\d\.]", "", str(v))
-    for v in df.shipping_fee
-]
-df["shipping_fee"] = df.shipping_fee.astype(float)
+
 
 # Export the cleaned version
-df.to_csv("../Data/orders_data_cl.csv", index=False)
+
