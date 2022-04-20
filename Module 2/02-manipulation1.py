@@ -37,7 +37,7 @@ display(df)
 df = pd.read_csv("../Data/orders_data_cl.csv")
 # Show how iterrows works
 for i, r in df.iterrows():
-    display(i,r)
+    display(i, r)
     break
 for i, r in df.iterrows():
     r["total_paid"] = r.item_total + r.shipping_fee
@@ -47,7 +47,7 @@ for i, r in df.iterrows():
         r["capital_tax"] = 0
     display(r)
     # df.ioc[i] = r
-    break
+    # break
 # Show df and look for added columns
 display(df)
 
@@ -58,5 +58,36 @@ display(df)
 
 # How about we apply a different tax for each city
 # Example using iterrows
+df = pd.read_csv("../Data/orders_data_cl.csv")
+for i, r in df.iterrows():
+    if r.ship_city == "MUMBAI,":
+        r["capital_tax"] = 0.1
+    elif r.ship_city == "BENGALURU,":
+        r["capital_tax"] = 0.2
+    elif r.ship_city == "KOLKATA,":
+        r["capital_tax"] = 0.3
+    elif r.ship_city == "HYDERABAD,":
+        r["capital_tax"] = 0.4
+    elif r.ship_city == "CHENNAI,":
+        r["capital_tax"] = 0.5
+    display(r)
+    # df.ioc[i] = r
+    # break
 # Example using loc
+df = pd.read_csv("../Data/orders_data_cl.csv")
+df.loc[df.ship_city == "MUMBAI,", "capital_tax"] = 0.1
+df.loc[df.ship_city == "BENGALURU,", "capital_tax"] = 0.2
+df.loc[df.ship_city == "KOLKATA,", "capital_tax"] = 0.3
+df.loc[df.ship_city == "HYDERABAD,", "capital_tax"] = 0.4
+df.loc[df.ship_city == "CHENNAI,", "capital_tax"] = 0.5
 # Example using merge
+df = pd.read_csv("../Data/orders_data_cl.csv")
+tax_rates_df = pd.read_csv("../Data/tax_rates.csv")
+display(tax_rates_df)
+df = pd.merge(
+    df,
+    tax_rates_df,
+    on="ship_city",
+    how="inner"
+)
+display(df)
