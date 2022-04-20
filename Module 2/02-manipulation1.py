@@ -1,4 +1,8 @@
-"""Tutorial on manipulating data"""
+"""Tutorial on manipulating data
+For full reference of manipulations visit:
+- https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html
+- https://pandas.pydata.org/docs/reference/api/pandas.Series.html
+"""
 from time import sleep
 import pandas as pd
 # from tqdm import tqdm
