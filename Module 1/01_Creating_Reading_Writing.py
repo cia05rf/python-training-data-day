@@ -66,6 +66,12 @@ print(a.pow(b))
 # * A Series
 # * Another DataFrame
 
+# Create a datframe from a pandas series
+df = a.to_frame()
+print(df)
+print(type(a))
+print(type(df))
+
 # From dict of series
 
 d = {
@@ -100,8 +106,22 @@ print(df.shape)
 series = df['points']
 print(series)
 
-# Accessing the dataframe
+# Setting the index on the dataframe
 df.index = [1, 7, 8, 19]
+print(df)
+
+# column from index
+df = df.reset_index()
+print(df)
+
+# Index from column
+df = df.set_index('index')
+print(df)
+
+# access series
+print(df['time'])
+print(df.time)
+
 print(df)
 # Select everything
 print(df.loc[:, :])
